@@ -1,0 +1,26 @@
+<h3 matDialogTitle>Blog Details</h3>
+<form [formGroup]="blogForm">
+  <mat-dialog-content>
+    <mat-form-field class="col">
+      <mat-label>Title</mat-label>
+      <textarea matInput name="title" formControlName="title" rows="2"></textarea>
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="title" formControlName="description" rows="8"></textarea>
+    </mat-form-field>
+    <div class="input-group col mb-3">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="imageUrl" name="imageUrl" (change)="selectFile($event.target.files)">
+        <label class="custom-file-label" for="imageUrl">
+          <span *ngIf="tempFile == null">Choose file</span>
+          <span *ngIf="tempFile != null">{{ tempFile.name }}</span>
+        </label>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button [mat-dialog-close]="null" color="warn">Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="blogForm.value" color="primary">Submit</button>
+  </mat-dialog-actions>
+</form>
